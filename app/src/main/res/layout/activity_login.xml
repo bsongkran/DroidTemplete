@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="loginViewModel"
+            type="com.monaosoftware.droid.data.viewmodel.LoginViewModel"/>
+    </data>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="18dp"
+        android:paddingRight="18dp">
+
+        <Button
+            android:id="@+id/btn_login"
+            style="@style/ColoredButton"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:layout_centerInParent="true"
+            android:layout_marginBottom="3dp"
+            android:text="@string/btn_login"
+            android:onClick="@{loginViewModel.onLoginClick}"
+            android:textAllCaps="false"/>
+
+        <com.facebook.login.widget.LoginButton
+            android:id="@+id/btn_facebook_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/btn_login"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:paddingBottom="13sp"
+            android:paddingLeft="28sp"
+            android:paddingTop="13sp"/>
+
+
+        <ImageView
+            android:id="@+id/imv_logo"
+            android:layout_width="90dp"
+            android:layout_height="90dp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:src="@drawable/ic_launcher"
+            android:layout_marginTop="18dp"/>
+
+
+        <EditText
+            android:id="@+id/edt_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/edt_password"
+            android:layout_centerHorizontal="true"
+            android:text="@={loginViewModel.username}"
+            android:hint="Username">
+            <requestFocus/>
+        </EditText>
+
+        <EditText
+            android:id="@+id/edt_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/btn_login"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="12dp"
+            android:layout_marginTop="6dp"
+            android:text="@={loginViewModel.password}"
+            android:hint="Password"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="35dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:adjustViewBounds="true"/>
+
+            <TextView
+                android:id="@+id/tv_register_entz_girl"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentBottom="true"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="3dp"
+                android:padding="6dp"
+                android:text=""
+                android:textColor="#fc0130"
+                android:textStyle="bold"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+</layout>
