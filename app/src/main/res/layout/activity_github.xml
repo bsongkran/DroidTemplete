@@ -6,7 +6,7 @@
 
         <variable
             name="viewModel"
-            type="com.monaosoftware.droid.data.viewmodel.GithubViewModel"/>
+            type="com.example.droid.data.viewmodel.GithubViewModel"/>
     </data>
 
     <RelativeLayout
