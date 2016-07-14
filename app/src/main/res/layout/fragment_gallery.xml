@@ -1,15 +1,32 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             xmlns:tools="http://schemas.android.com/tools"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+    
+   <data>
+       <variable
+           name="viewModel"
+           type="com.example.droid.data.viewmodel.gallery.GalleryViewModel"></variable>
+   </data>
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
-        android:layout_centerHorizontal="true"
-        android:textAlignment="center"
-        android:text="Gallery"/>
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-</RelativeLayout>
+        <ProgressBar
+            android:id="@+id/progress_load_gallery"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"/>
+
+        <GridView
+            android:id="@+id/gv_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:numColumns="2"></GridView>
+
+    </RelativeLayout>
+
+</layout>

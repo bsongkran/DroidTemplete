@@ -87,7 +87,7 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="15dp"
             android:padding="6dp"
-            android:text="สมัครใช้งาน"
+            android:text="@string/login_register_text"
             android:textColor="#0122fc"
             android:textStyle="bold"/>
 

@@ -1,4 +1,4 @@
-package com.example.droid.data.viewmodel;
+package com.example.droid.data.viewmodel.github;
 
 import android.content.Context;
 import android.databinding.ObservableField;
@@ -12,6 +12,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.TextView;
 
 import com.example.droid.R;
+import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.service.api.ApiClient;
 import com.example.droid.data.model.Repository;
 

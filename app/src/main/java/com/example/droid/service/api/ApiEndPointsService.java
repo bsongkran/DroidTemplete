@@ -1,6 +1,7 @@
 package com.example.droid.service.api;
 
 import com.example.droid.data.model.AppUser;
+import com.example.droid.data.model.PrettyModel;
 import com.example.droid.data.model.Repository;
 import com.example.droid.data.model.User;
 
@@ -35,5 +36,7 @@ public interface ApiEndPointsService {
     @GET
     Observable<User> userFromUrl(@Url String userUrl);
 
+    @GET
+    Observable<PrettyModel> getPrettyData(@Url String url);
 
 }

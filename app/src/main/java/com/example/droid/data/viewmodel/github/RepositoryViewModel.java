@@ -1,4 +1,4 @@
-package com.example.droid.data.viewmodel;
+package com.example.droid.data.viewmodel.github;
 
 import android.content.Context;
 import android.databinding.BindingAdapter;
@@ -14,6 +14,7 @@ import rx.functions.Action1;
 
 import com.bumptech.glide.Glide;
 import com.example.droid.R;
+import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.service.api.ApiClient;
 import com.example.droid.data.model.Repository;
 import com.example.droid.data.model.User;

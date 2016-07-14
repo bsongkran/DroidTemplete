@@ -26,6 +26,7 @@ import com.example.droid.data.model.AppUser;
 import com.example.droid.data.repository.AppUserRepository;
 import com.example.droid.databinding.ActivityMainDrawerBinding;
 import com.example.droid.util.FileUtil;
+import com.example.droid.view.fragment.SettingsFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.MainViewModel;
@@ -192,27 +193,40 @@ public class MainDrawerActivity extends AppCompatActivity implements NavigationV
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_map) {
-            binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_map);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container_main, MapFragment.newInstance(), MapFragment.newInstance().getClass().getName()).commit();
-        } else if (id == R.id.nav_gallery) {
-            binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_gallery);
-            getSupportFragmentManager().beginTransaction().replace(R.id.container_main, GalleryFragment.newInstance(), GalleryFragment.newInstance().getClass().getName()).commit();
-        } else if (id == R.id.nav_slideshow) {
-            binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_slideshow);
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_github) {
-            openGithubScreen();
-        } else if (id == R.id.nav_settings) {
-            binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_settings);
+        Fragment fragment = null;
+        switch (item.getItemId()){
+            case R.id.nav_map:
+                binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_map);
+                fragment = MapFragment.newInstance();
+                break;
+            case R.id.nav_gallery:
+                binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_gallery);
+                fragment = GalleryFragment.newInstance();
+                break;
+            case R.id.nav_slideshow:
+                binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_slideshow);
+                fragment = GalleryFragment.newInstance();
+                break;
+            case R.id.nav_github:
+                binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_gallery);
+                openGithubScreen();
+                break;
+            case R.id.nav_settings:
+                binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_settings);
+                fragment = SettingsFragment.newInstance();
+                break;
+            default:
+                binding.drawerLayout.closeDrawers();
+                return false;
         }
 
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
+        if(fragment != null){
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.container_main, fragment)
+                    .commit();
+        }
+
+        binding.drawerLayout.closeDrawers();
         return true;
     }
 

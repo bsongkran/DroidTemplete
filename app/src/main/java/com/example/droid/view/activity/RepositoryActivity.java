@@ -8,7 +8,7 @@ import android.support.v7.app.ActionBar;
 
 import com.example.droid.R;
 import com.example.droid.data.model.Repository;
-import com.example.droid.data.viewmodel.RepositoryViewModel;
+import com.example.droid.data.viewmodel.github.RepositoryViewModel;
 import com.example.droid.databinding.ActivityRepositoryBinding;
 
 

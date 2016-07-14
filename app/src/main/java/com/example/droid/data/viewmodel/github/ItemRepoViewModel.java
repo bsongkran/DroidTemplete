@@ -1,4 +1,4 @@
-package com.example.droid.data.viewmodel;
+package com.example.droid.data.viewmodel.github;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.example.droid.R;
 import com.example.droid.data.model.Repository;
+import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.view.activity.RepositoryActivity;
 
 

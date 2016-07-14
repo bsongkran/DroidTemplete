@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.droid.data.viewmodel.ItemRepoViewModel" />
+            type="com.example.droid.data.viewmodel.github.ItemRepoViewModel" />
     </data>
 
     <android.support.v7.widget.CardView

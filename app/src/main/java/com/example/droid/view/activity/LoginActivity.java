@@ -2,8 +2,6 @@ package com.example.droid.view.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -22,13 +20,11 @@ import com.example.droid.R;
 import com.example.droid.config.Constants;
 import com.example.droid.data.model.AppUser;
 import com.example.droid.data.repository.AppUserRepository;
-import com.example.droid.data.viewmodel.LoginViewModel;
+import com.example.droid.data.viewmodel.login.LoginViewModel;
 import com.example.droid.databinding.ActivityLoginBinding;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.net.URL;
 import java.util.Arrays;
 
 import cc.cloudist.acplibrary.ACProgressConstant;

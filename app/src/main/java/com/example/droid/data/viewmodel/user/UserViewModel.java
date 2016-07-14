@@ -1,10 +1,11 @@
-package com.example.droid.data.viewmodel;
+package com.example.droid.data.viewmodel.user;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 
 import com.example.droid.BR;
+import com.example.droid.data.viewmodel.BaseViewModel;
 
 /**
  * Created by ss on 7/6/2016.

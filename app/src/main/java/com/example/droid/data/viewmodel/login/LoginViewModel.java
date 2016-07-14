@@ -1,4 +1,4 @@
-package com.example.droid.data.viewmodel;
+package com.example.droid.data.viewmodel.login;
 
 import android.content.Context;
 import android.databinding.BaseObservable;
@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import com.example.droid.BR;
 import com.example.droid.data.repository.AppUserRepository;
+import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.service.api.ApiClient;
 import com.example.droid.data.model.AppUser;
 import com.example.droid.data.model.Repository;

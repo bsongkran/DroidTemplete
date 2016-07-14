@@ -19,7 +19,7 @@ public class SettingsFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static SettingsFragment newInstance(String param1, String param2) {
+    public static SettingsFragment newInstance() {
         SettingsFragment fragment = new SettingsFragment();
         return fragment;
     }

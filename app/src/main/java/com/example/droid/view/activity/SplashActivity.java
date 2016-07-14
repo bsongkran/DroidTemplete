@@ -2,22 +2,15 @@ package com.example.droid.view.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 
+import com.example.droid.R;
 import com.example.droid.data.model.AppUser;
 import com.example.droid.data.repository.AppUserRepository;
-import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
-import com.example.droid.R;
-import com.example.droid.config.Constants;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private Handler handler;
-    private Runnable runnable;
-    private long delay_time;
-    private long time = 3000L;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,16 +24,11 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        delay_time = time;
-        handler.postDelayed(runnable, delay_time);
-        time = System.currentTimeMillis();
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        handler.removeCallbacks(runnable);
-        time = delay_time - (System.currentTimeMillis() - time);
     }
 
     @Override
@@ -48,31 +36,16 @@ public class SplashActivity extends AppCompatActivity {
         super.onDestroy();
     }
 
-    public boolean isLoggedInWithFacebook() {
-        AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        return accessToken != null;
-    }
-
     private void openLoginScreen() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, Constants.SPLASH_SCREEN_DELAY_TIME);
+        Intent intent = new Intent(SplashActivity.this, LoginActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void openMainScreen() {
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
-                startActivity(intent);
-                finish();
-            }
-        }, Constants.SPLASH_SCREEN_DELAY_TIME);
+        Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void openMainDrawerScreen() {
@@ -82,18 +55,12 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void checkingLoggedIn() {
-        handler = new Handler();
-        runnable = new Runnable() {
-            public void run() {
-                AppUser appUser = AppUserRepository.getAppUserRepository(getApplicationContext()).getAppUser();
-                if (appUser != null && appUser.isLoggedIn()) {
-                    openMainDrawerScreen();
-                } else {
-                    openLoginScreen();
-                }
-            }
-        };
-        handler.postDelayed(runnable, 50);
+        AppUser appUser = AppUserRepository.getAppUserRepository(getApplicationContext()).getAppUser();
+        if (appUser != null && appUser.isLoggedIn()) {
+            openMainDrawerScreen();
+        } else {
+            openLoginScreen();
+        }
     }
 
 }
