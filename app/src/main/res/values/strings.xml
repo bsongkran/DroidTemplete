@@ -1,10 +1,14 @@
 <resources>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <item name="bound_observable" type="id"/>
     <string name="app_name">DroidTemplate</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">LoginActivity</string>
     <string name="facebook_app_id">1105391016170922</string>
     <string name="btn_login">Login</string>
+
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="hello_world">Hello world!</string>
     <string name="text_stars">%d \nStars</string>
@@ -29,7 +33,11 @@
     <string name="toolbar_title_settings">SETTINGS</string>
     <string name="toolbar_title_profile">PROFILE</string>
 
+    <!--Login-->
+    <string name="login_register_text">สมัครสมาชิก</string>
+
     <!--Messages-->
     <string name="warning_message_close_the_app">Press again to close app.</string>
+
 
 </resources>

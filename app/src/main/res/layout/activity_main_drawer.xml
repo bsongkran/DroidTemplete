@@ -7,7 +7,7 @@
     <data>
         <variable
             name="mainViewModel"
-            type="com.monaosoftware.droid.data.viewmodel.MainViewModel"/>
+            type="com.example.droid.data.viewmodel.MainViewModel"/>
     </data>
 
 
@@ -31,6 +31,7 @@
             android:layout_height="match_parent"
             android:layout_gravity="start"
             android:fitsSystemWindows="true"
+            app:model="@{mainViewModel}"
             app:headerLayout="@layout/nav_header_main_drawer"
             app:menu="@menu/menu_drawer"/>
 
