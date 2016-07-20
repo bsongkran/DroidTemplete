@@ -8,8 +8,9 @@ import android.databinding.ObservableInt;
 import android.view.View;
 
 import com.example.droid.BR;
-import com.example.droid.data.model.AppUser;
-import com.example.droid.data.repository.AppUserRepository;
+import com.example.droid.data.dal.IAppUserRepository;
+import com.example.droid.data.model.user.AppUser;
+import com.example.droid.data.dal.repositories.AppUserRepository;
 
 import rx.Subscription;
 
@@ -62,12 +63,12 @@ public class MainViewModel extends BaseObservable implements BaseViewModel {
     }
 
 
-    public MainViewModel(Context context, DataListener dataListener) {
+    public MainViewModel(Context context, DataListener dataListener , IAppUserRepository appUserRepository) {
         this.context = context;
         this.dataListener = dataListener;
         this.infoMessageVisibility = new ObservableInt(View.VISIBLE);
         this.toolbarTitle = new ObservableField<>("DroidTemplate");
-        this.appUser = AppUserRepository.getAppUserRepository(context).getAppUser();
+        this.appUser = appUserRepository.getAppUser();
 
         updateView(appUser);
     }

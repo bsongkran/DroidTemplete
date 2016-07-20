@@ -2,8 +2,6 @@ package com.example.droid.view.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
-import android.graphics.Bitmap;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
@@ -13,35 +11,24 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
-import com.bumptech.glide.Glide;
-import com.example.droid.data.model.AppUser;
-import com.example.droid.data.repository.AppUserRepository;
+import com.example.droid.MainApplication;
+import com.example.droid.data.dal.IAppUserRepository;
 import com.example.droid.databinding.ActivityMainDrawerBinding;
-import com.example.droid.util.FileUtil;
+import com.example.droid.service.api.IRestApiClient;
 import com.example.droid.view.fragment.SettingsFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.MainViewModel;
 
-import com.example.droid.service.external.FusedLocationService;
-import com.example.droid.util.MarshMallowPermission;
 import com.example.droid.view.fragment.GalleryFragment;
 import com.example.droid.view.fragment.MapFragment;
 
-import org.w3c.dom.Text;
-
-import java.io.IOException;
-import java.net.URL;
-
-import de.hdodenhof.circleimageview.CircleImageView;
+import javax.inject.Inject;
 
 
 public class MainDrawerActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainViewModel.DataListener {
@@ -52,12 +39,19 @@ public class MainDrawerActivity extends AppCompatActivity implements NavigationV
     private Toast mToastWarningMessage;
 
 
+    @Inject
+    IAppUserRepository appUserRepository;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //Inject
+        MainApplication.get(getApplicationContext()).getComponent().inject(this);
+
         //Binding data
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main_drawer);
-        mainViewModel = new MainViewModel(getApplicationContext(), this);
+        mainViewModel = new MainViewModel(getApplicationContext(), this , appUserRepository );
         binding.setMainViewModel(mainViewModel);
 
         setupToolbar();

@@ -5,7 +5,6 @@ import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
 import android.text.Editable;
 import android.text.TextWatcher;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
@@ -13,15 +12,12 @@ import android.widget.TextView;
 
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.BaseViewModel;
-import com.example.droid.service.api.ApiClient;
 import com.example.droid.data.model.Repository;
 
 import java.util.List;
 
 import retrofit2.adapter.rxjava.HttpException;
-import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 
 
 /**
@@ -104,7 +100,7 @@ public class GithubViewModel implements BaseViewModel {
         infoMessageVisibility.set(View.INVISIBLE);
 
         if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
-        ApiClient apiClient = ApiClient.getInstance(context);
+       /* ApiClient apiClient = ApiClient.getInstance(context);
         subscription = apiClient.getService().publicRepositories(username)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(apiClient.defaultSubscribeScheduler())
@@ -138,7 +134,7 @@ public class GithubViewModel implements BaseViewModel {
                         Log.i(TAG, "Repos loaded " + repositories);
                         GithubViewModel.this.repositories = repositories;
                     }
-                });
+                });*/
     }
 
     private static boolean isHttp404(Throwable error) {

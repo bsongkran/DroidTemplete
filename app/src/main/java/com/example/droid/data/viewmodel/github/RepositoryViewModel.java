@@ -1,23 +1,15 @@
 package com.example.droid.data.viewmodel.github;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
 import android.databinding.ObservableField;
 import android.databinding.ObservableInt;
-import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 
-import com.bumptech.glide.Glide;
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.BaseViewModel;
-import com.example.droid.service.api.ApiClient;
 import com.example.droid.data.model.Repository;
-import com.example.droid.data.model.User;
 
 
 /**
@@ -26,7 +18,6 @@ import com.example.droid.data.model.User;
 public class RepositoryViewModel implements BaseViewModel {
 
     private static final String TAG = "RepositoryViewModel";
-
     private Repository repository;
     private Context context;
     private Subscription subscription;
@@ -92,7 +83,7 @@ public class RepositoryViewModel implements BaseViewModel {
 
 
     private void loadFullUser(String url) {
-        ApiClient apiClient = ApiClient.getInstance(context);
+      /*  ApiClient apiClient = ApiClient.getInstance(context);
 
         subscription = apiClient.getService().userFromUrl(url)
                 .observeOn(AndroidSchedulers.mainThread())
@@ -108,6 +99,6 @@ public class RepositoryViewModel implements BaseViewModel {
                         ownerLocationVisibility.set(user.hasLocation() ? View.VISIBLE : View.GONE);
                         ownerLayoutVisibility.set(View.VISIBLE);
                     }
-                });
+                });*/
     }
 }

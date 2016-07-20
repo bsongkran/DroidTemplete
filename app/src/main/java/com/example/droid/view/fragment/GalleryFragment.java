@@ -10,11 +10,15 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.droid.MainApplication;
 import com.example.droid.R;
 import com.example.droid.data.model.Pretty;
 import com.example.droid.data.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.databinding.FragmentGalleryBinding;
+import com.example.droid.service.api.IRestApiClient;
 import com.example.droid.view.adapter.GalleryRecycleAdapter;
+
+import javax.inject.Inject;
 
 
 public class GalleryFragment extends Fragment implements GalleryViewModel.IDataChangedListener {
@@ -23,6 +27,9 @@ public class GalleryFragment extends Fragment implements GalleryViewModel.IDataC
     private Context context;
     private FragmentGalleryBinding binding;
     private GalleryViewModel galleryViewModel;
+
+    @Inject
+    IRestApiClient restApiClient;
 
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
@@ -41,7 +48,10 @@ public class GalleryFragment extends Fragment implements GalleryViewModel.IDataC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        galleryViewModel = new GalleryViewModel(getActivity().getApplicationContext() , this);
+        this.context = getActivity().getApplicationContext();
+        MainApplication.get(context).getComponent().inject(this);
+
+        galleryViewModel = new GalleryViewModel(context , this , this.restApiClient);
     }
 
     @Override

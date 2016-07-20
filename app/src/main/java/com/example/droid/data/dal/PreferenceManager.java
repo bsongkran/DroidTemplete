@@ -1,4 +1,4 @@
-package com.example.droid.data.repository;
+package com.example.droid.data.dal;
 
 import android.content.Context;
 import android.content.SharedPreferences;

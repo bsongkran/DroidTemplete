@@ -4,24 +4,17 @@ import android.content.Context;
 import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.databinding.PropertyChangeRegistry;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.Toast;
 
 
 import com.example.droid.BR;
-import com.example.droid.data.repository.AppUserRepository;
+import com.example.droid.data.dal.IAppUserRepository;
+import com.example.droid.data.dal.repositories.AppUserRepository;
 import com.example.droid.data.viewmodel.BaseViewModel;
-import com.example.droid.service.api.ApiClient;
-import com.example.droid.data.model.AppUser;
-import com.example.droid.data.model.Repository;
+import com.example.droid.data.model.user.AppUser;
 
-import java.util.List;
-
-import rx.Observable;
-import rx.Subscriber;
 import rx.Subscription;
-import rx.android.schedulers.AndroidSchedulers;
 
 
 /**
@@ -38,7 +31,7 @@ public class LoginViewModel extends BaseObservable implements BaseViewModel  {
     private Subscription subscription;
     private LoginDataListener loginDataListener;
     private AppUser appUser;
-    private AppUserRepository appUserRepository;
+    private IAppUserRepository appUserRepository;
 
     private String username;
     private String password;
@@ -46,7 +39,7 @@ public class LoginViewModel extends BaseObservable implements BaseViewModel  {
     private PropertyChangeRegistry callbacks = new PropertyChangeRegistry();
 
 
-    public LoginViewModel(Context context, AppUser appUser , AppUserRepository appUserRepository) {
+    public LoginViewModel(Context context, AppUser appUser , IAppUserRepository appUserRepository) {
         this.context = context;
         this.appUserRepository = appUserRepository;
         this.appUser = appUser;
@@ -85,7 +78,7 @@ public class LoginViewModel extends BaseObservable implements BaseViewModel  {
             subscription.unsubscribe();
         }
 
-        ApiClient apiClient = ApiClient.getInstance(context);
+       /* ApiClient apiClient = ApiClient.getInstance(context);
         subscription = apiClient.getService().publicRepositories(username)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(apiClient.defaultSubscribeScheduler())
@@ -104,7 +97,7 @@ public class LoginViewModel extends BaseObservable implements BaseViewModel  {
                     public void onNext(List<Repository> repositories) {
                         System.out.println(repositories);
                     }
-                });
+                });*/
     }
 
     @Override

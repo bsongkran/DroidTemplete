@@ -7,11 +7,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
+import com.example.droid.MainApplication;
 import com.example.droid.R;
 
+import com.example.droid.data.dal.IAppUserRepository;
 import com.example.droid.databinding.ActivityMainBinding;
 import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.data.viewmodel.MainViewModel;
+
+import javax.inject.Inject;
 
 public class MainActivity extends BaseActivity implements BaseViewModel , MainViewModel.DataListener  {
 
@@ -19,12 +23,17 @@ public class MainActivity extends BaseActivity implements BaseViewModel , MainVi
     private ActivityMainBinding binding;
     private MainViewModel mainViewModel;
 
+    @Inject
+    IAppUserRepository appUserRepository;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        MainApplication.get(getApplicationContext()).getComponent().inject(this);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
-        mainViewModel = new MainViewModel(this, this);
+        mainViewModel = new MainViewModel(this, this , appUserRepository );
         binding.setViewModel(mainViewModel);
         setSupportActionBar(binding.toolbar);
 

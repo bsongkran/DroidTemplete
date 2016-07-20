@@ -28,41 +28,72 @@ import rx.Scheduler;
 import rx.schedulers.Schedulers;
 
 
-public class ApiClient {
+public class RestApiClient implements IRestApiClient {
 
-    private static ApiClient instance = null;
     private Map<String, String> headers = new HashMap<String, String>();
-    private ApiEndPointsService service;
+    private IRestApiEndPoints restApiEndPoints;
     private Context context;
     private Scheduler defaultSubscribeScheduler;
 
     /**
      * public constructor
      */
-    private ApiClient(Context context) {
+    public RestApiClient(Context context) {
         this.context = context;
+        this.initializeApi();
     }
 
     /**
-     * Get the HttpApi singleton instance
+     * Add a header which is added to every API request
      */
-    public static ApiClient getInstance(Context context) {
-        if (instance == null) {
-            instance = new ApiClient(context);
-            instance.initializeApiClient();
+    public void addHeader(String key, String value) {
+        headers.put(key, value);
+    }
+
+    /**
+     * Add multiple headers
+     */
+    public void addHeaders(Map<String, String> headers) {
+        this.headers.putAll(headers);
+    }
+
+    /**
+     * Remove a header
+     */
+    public void removeHeader(String key) {
+        headers.remove(key);
+    }
+
+    /**
+     * Remove all headers
+     */
+    public void clearHeaders() {
+        headers.clear();
+    }
+
+    /**
+     * Get all headers
+     */
+    public Map<String, String> getHeaders() {
+        return headers;
+    }
+
+
+    @Override
+    public Scheduler defaultSubscribeScheduler() {
+        if (defaultSubscribeScheduler == null) {
+            defaultSubscribeScheduler = Schedulers.io();
         }
-        return instance;
+        return defaultSubscribeScheduler;
     }
 
-
-    /**
-     * Get the API service to execute calls with
-     */
-    public ApiEndPointsService getService() {
-        return service;
+    //User to change scheduler from tests
+    public void setDefaultSubscribeScheduler(Scheduler scheduler) {
+        this.defaultSubscribeScheduler = scheduler;
     }
 
-    private void initializeApiClient() {
+    @Override
+    public void initializeApi() {
         // OkHttpClient V3.0
         Dispatcher dispatcher = new Dispatcher(Executors.newFixedThreadPool(20));
         dispatcher.setMaxRequests(20);
@@ -105,54 +136,11 @@ public class ApiClient {
                 .build();
 
         // Service setup
-        service = retrofit.create(ApiEndPointsService.class);
+        restApiEndPoints = retrofit.create(IRestApiEndPoints.class);
     }
 
-    /**
-     * Add a header which is added to every API request
-     */
-    public void addHeader(String key, String value) {
-        headers.put(key, value);
-    }
-
-    /**
-     * Add multiple headers
-     */
-    public void addHeaders(Map<String, String> headers) {
-        this.headers.putAll(headers);
-    }
-
-    /**
-     * Remove a header
-     */
-    public void removeHeader(String key) {
-        headers.remove(key);
-    }
-
-    /**
-     * Remove all headers
-     */
-    public void clearHeaders() {
-        headers.clear();
-    }
-
-    /**
-     * Get all headers
-     */
-    public Map<String, String> getHeaders() {
-        return headers;
-    }
-
-
-    public Scheduler defaultSubscribeScheduler() {
-        if (defaultSubscribeScheduler == null) {
-            defaultSubscribeScheduler = Schedulers.io();
-        }
-        return defaultSubscribeScheduler;
-    }
-
-    //User to change scheduler from tests
-    public void setDefaultSubscribeScheduler(Scheduler scheduler) {
-        this.defaultSubscribeScheduler = scheduler;
+    @Override
+    public IRestApiEndPoints getRestApiEndPoints() {
+        return this.restApiEndPoints;
     }
 }

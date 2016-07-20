@@ -1,4 +1,4 @@
-package com.example.droid.data.model;
+package com.example.droid.data.model.user;
 
 /**
  * Created by ss on 6/30/2016.

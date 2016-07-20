@@ -8,6 +8,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.example.droid.MainApplication;
+import com.example.droid.data.dal.IAppUserRepository;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -18,14 +20,16 @@ import com.facebook.appevents.AppEventsLogger;
 import com.facebook.login.LoginResult;
 import com.example.droid.R;
 import com.example.droid.config.Constants;
-import com.example.droid.data.model.AppUser;
-import com.example.droid.data.repository.AppUserRepository;
+import com.example.droid.data.model.user.AppUser;
+import com.example.droid.data.dal.repositories.AppUserRepository;
 import com.example.droid.data.viewmodel.login.LoginViewModel;
 import com.example.droid.databinding.ActivityLoginBinding;
 
 import org.json.JSONObject;
 
 import java.util.Arrays;
+
+import javax.inject.Inject;
 
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
@@ -35,9 +39,11 @@ public class LoginActivity extends AppCompatActivity implements LoginViewModel.L
     private static final String TAG = "LoginActivity";
     private ActivityLoginBinding binding;
     private LoginViewModel loginViewModel;
-    private AppUserRepository appUserRepository;
     private CallbackManager callbackManager;
     private ACProgressFlower acProgressFlower;
+
+    @Inject
+    IAppUserRepository appUserRepository;
 
     private FacebookCallback<LoginResult> facebookCallback = new FacebookCallback<LoginResult>() {
         @Override
@@ -103,10 +109,12 @@ public class LoginActivity extends AppCompatActivity implements LoginViewModel.L
         AppEventsLogger.activateApp(this);
 
         setContentView(R.layout.activity_login);
-        this.appUserRepository = AppUserRepository.getAppUserRepository(getApplicationContext());
-        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
+
+        //Inject
+        MainApplication.get(getApplicationContext()).getComponent().inject(this);
 
         this.callbackManager = CallbackManager.Factory.create();
+        this.binding = DataBindingUtil.setContentView(this, R.layout.activity_login);
         this.binding.btnFacebookLogin.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
         this.binding.btnFacebookLogin.registerCallback(callbackManager, facebookCallback);
         this.binding.btnFacebookLogin.setOnClickListener(new View.OnClickListener() {

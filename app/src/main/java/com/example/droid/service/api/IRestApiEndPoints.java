@@ -1,6 +1,6 @@
 package com.example.droid.service.api;
 
-import com.example.droid.data.model.AppUser;
+import com.example.droid.data.model.user.AppUser;
 import com.example.droid.data.model.Pretty;
 import com.example.droid.data.model.Repository;
 import com.example.droid.data.model.User;
@@ -17,7 +17,7 @@ import rx.Observable;
 /**
  * Created by ss on 2/5/2016.
  */
-public interface ApiEndPointsService {
+public interface IRestApiEndPoints {
 
     /*Login*/
     @GET("Api/AppUserApi/LoginByEmailAndPasswordForShop")
