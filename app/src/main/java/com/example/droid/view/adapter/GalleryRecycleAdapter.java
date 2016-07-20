@@ -8,7 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.droid.R;
-import com.example.droid.data.model.Pretty;
+import com.example.droid.data.model.user.Pretty;
 import com.example.droid.data.viewmodel.gallery.ItemGridViewModel;
 import com.example.droid.databinding.ItemGalleryBinding;
 

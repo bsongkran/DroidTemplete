@@ -1,10 +1,6 @@
 package com.example.droid.service.external;
 
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
-
 import android.Manifest;
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Location;
@@ -15,11 +11,13 @@ import android.support.v4.content.ContextCompat;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderApi;
-import com.google.android.gms.location.LocationListener;
 import com.google.android.gms.location.LocationRequest;
 import com.google.android.gms.location.LocationServices;
 
-public class FusedLocationService implements LocationListener, GoogleApiClient.ConnectionCallbacks, GoogleApiClient.OnConnectionFailedListener {
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+
+public class FusedLocationService implements IFusedLocationService {
 
     private static final String TAG = "FusedLocationService";
     private static final long INTERVAL = 1000 * 30;
@@ -27,36 +25,28 @@ public class FusedLocationService implements LocationListener, GoogleApiClient.C
     private static final long ONE_MIN = 1000 * 60;
     private static final long REFRESH_TIME = ONE_MIN * 5;
     private static final float MINIMUM_ACCURACY = 50.0f;
-    private static FusedLocationService instance;
     private Context context;
     private Location mCurrentLocation;
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
     private FusedLocationProviderApi fusedLocationProviderApi;
-    private boolean isAppInBackground;
-    private Activity activity;
 
-    public FusedLocationService(Context context, Activity activity) {
+    public FusedLocationService(Context context) {
         this.context = context;
-        this.activity = activity;
     }
 
-    public static FusedLocationService getFusedLocationService(Context context, Activity activity) {
-        if (instance == null) {
-            instance = new FusedLocationService(context, activity);
-            instance.initialGoogleApiClient();
-            instance.initialLocationServices();
-        }
-        return instance;
+    public void initialService(){
+        setupLocationServices();
+        setupGoogleApiClient();
     }
 
-    private void initialLocationServices() {
+    private void setupLocationServices() {
         if (checkPermissionForAccessFineLocation()) {
-            instance.fusedLocationProviderApi = LocationServices.FusedLocationApi;
+            fusedLocationProviderApi = LocationServices.FusedLocationApi;
         }
     }
 
-    public void initialGoogleApiClient() {
+    private void setupGoogleApiClient() {
         if (mGoogleApiClient == null) {
             mGoogleApiClient = new GoogleApiClient.Builder(context)
                     .addApi(LocationServices.API)
@@ -71,7 +61,7 @@ public class FusedLocationService implements LocationListener, GoogleApiClient.C
         }
     }
 
-    public void createLocationRequest() {
+    private void createLocationRequest() {
         mLocationRequest = LocationRequest.create();
         if (checkPermissionForAccessFineLocation()) {
             mLocationRequest.setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY);
@@ -90,14 +80,6 @@ public class FusedLocationService implements LocationListener, GoogleApiClient.C
     public void requestDisconnect() {
         if (mGoogleApiClient != null)
             mGoogleApiClient.disconnect();
-    }
-
-    public boolean isAppInbackground() {
-        return isAppInBackground;
-    }
-
-    public void setAppInbackground(boolean isAppInbackground) {
-        instance.isAppInBackground = isAppInbackground;
     }
 
     public void stopLocationUpdates() {
@@ -147,6 +129,7 @@ public class FusedLocationService implements LocationListener, GoogleApiClient.C
         }
     }
 
+    @Override
     public Location getLocation() {
         return this.mCurrentLocation;
     }
@@ -162,7 +145,7 @@ public class FusedLocationService implements LocationListener, GoogleApiClient.C
     }
 
     private boolean checkPermissionForAccessFineLocation() {
-        int result = ContextCompat.checkSelfPermission(activity, Manifest.permission.ACCESS_FINE_LOCATION);
+        int result = ContextCompat.checkSelfPermission(context, Manifest.permission.ACCESS_FINE_LOCATION);
         if (result == PackageManager.PERMISSION_GRANTED) {
             return true;
         } else {

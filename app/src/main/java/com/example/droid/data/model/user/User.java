@@ -1,4 +1,4 @@
-package com.example.droid.data.model;
+package com.example.droid.data.model.user;
 
 import android.os.Parcel;
 import android.os.Parcelable;

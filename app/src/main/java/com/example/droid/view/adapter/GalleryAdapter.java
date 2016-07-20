@@ -10,7 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.droid.R;
-import com.example.droid.data.model.Pretty;
+import com.example.droid.data.model.user.Pretty;
 
 import java.util.Collections;
 import java.util.List;

@@ -5,7 +5,7 @@ import android.databinding.BaseObservable;
 import android.view.View;
 
 import com.example.droid.R;
-import com.example.droid.data.model.Repository;
+import com.example.droid.data.model.github.Repository;
 import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.view.activity.RepositoryActivity;
 

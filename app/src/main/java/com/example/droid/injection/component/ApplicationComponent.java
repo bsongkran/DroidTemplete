@@ -10,6 +10,7 @@ import com.example.droid.view.activity.MainActivity;
 import com.example.droid.view.activity.MainDrawerActivity;
 import com.example.droid.view.activity.SplashActivity;
 import com.example.droid.view.fragment.GalleryFragment;
+import com.example.droid.view.fragment.MapFragment;
 
 import javax.inject.Singleton;
 
@@ -30,6 +31,7 @@ public interface ApplicationComponent {
 
     //Inject Fragments
     void inject(GalleryFragment galleryFragment);
+    void inject(MapFragment mapFragment);
 
 
     //Inject ViewModel

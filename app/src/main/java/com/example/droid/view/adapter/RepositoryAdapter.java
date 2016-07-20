@@ -6,7 +6,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
 import com.example.droid.R;
-import com.example.droid.data.model.Repository;
+import com.example.droid.data.model.github.Repository;
 
 import com.example.droid.data.viewmodel.github.ItemRepoViewModel;
 import com.example.droid.databinding.ItemRepoBinding;

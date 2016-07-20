@@ -8,6 +8,8 @@ import android.content.Context;
 
 import com.example.droid.service.api.IRestApiClient;
 import com.example.droid.service.api.RestApiClient;
+import com.example.droid.service.external.FusedLocationService;
+import com.example.droid.service.external.IFusedLocationService;
 
 import javax.inject.Singleton;
 
@@ -27,6 +29,12 @@ public class ServiceModule  {
     @Singleton
     public IRestApiClient provideRestApiClient(){
         return new RestApiClient(context);
+    }
+
+    @Provides
+    @Singleton
+    public IFusedLocationService provideFusedLocationService (){
+        return new FusedLocationService(context);
     }
 
 }

@@ -12,7 +12,7 @@ import android.view.ViewGroup;
 
 import com.example.droid.MainApplication;
 import com.example.droid.R;
-import com.example.droid.data.model.Pretty;
+import com.example.droid.data.model.user.Pretty;
 import com.example.droid.data.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.databinding.FragmentGalleryBinding;
 import com.example.droid.service.api.IRestApiClient;

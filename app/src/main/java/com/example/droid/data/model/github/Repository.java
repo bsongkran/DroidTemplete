@@ -1,8 +1,9 @@
-package com.example.droid.data.model;
+package com.example.droid.data.model.github;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.example.droid.data.model.user.User;
 import com.google.gson.annotations.SerializedName;
 
 public class Repository implements Parcelable {

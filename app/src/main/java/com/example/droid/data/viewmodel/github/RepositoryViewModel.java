@@ -9,7 +9,7 @@ import rx.Subscription;
 
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.BaseViewModel;
-import com.example.droid.data.model.Repository;
+import com.example.droid.data.model.github.Repository;
 
 
 /**

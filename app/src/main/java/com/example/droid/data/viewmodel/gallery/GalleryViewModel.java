@@ -3,7 +3,7 @@ package com.example.droid.data.viewmodel.gallery;
 import android.content.Context;
 import android.databinding.BaseObservable;
 
-import com.example.droid.data.model.Pretty;
+import com.example.droid.data.model.user.Pretty;
 import com.example.droid.data.viewmodel.BaseViewModel;
 import com.example.droid.service.api.IRestApiClient;
 

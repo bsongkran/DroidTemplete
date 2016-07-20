@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
+import com.example.droid.MainApplication;
+import com.example.droid.service.external.IFusedLocationService;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -41,6 +43,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 
 public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClickListener,
         OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMapLoadedCallback {
@@ -48,10 +52,11 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
     private Context context;
     private Location mCurrentLocation;
     private SupportMapFragment supportMapFragment;
-    private FusedLocationService fusedLocationService;
     private GoogleMap googleMap;
     private LatLng currenLatLng;
     private FragmentMapBinding binding;
+    @Inject
+    IFusedLocationService fusedLocationService;
 
     public MapFragment() {
         // Required empty public constructor
@@ -66,8 +71,11 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        initializeLocationService();
+        this.context = getActivity().getApplicationContext();
 
+        MainApplication.get(context).getComponent().inject(this);
+
+        initializeLocationService();
     }
 
     private void initializeLocationService() {
@@ -76,7 +84,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
         }
 
         if (MarshMallowPermission.getInstant(getActivity()).checkPermissionForAccessFineLocation()) {
-            FusedLocationService.getFusedLocationService(getActivity().getApplicationContext(), getActivity()).initialGoogleApiClient();
+            fusedLocationService.initialService();
         }
     }
 
@@ -196,7 +204,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
 
     @Override
     public void onMapLoaded() {
-        mCurrentLocation = FusedLocationService.getFusedLocationService(context, getActivity()).getLocation();
+        mCurrentLocation = fusedLocationService.getLocation();
         if (mCurrentLocation != null) {
             loadMapInfo(mCurrentLocation);
             if (MarshMallowPermission.getInstant(getActivity()).checkPermissionForAccessFineLocation()) {

@@ -9,7 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.inputmethod.InputMethodManager;
 
 import com.example.droid.R;
-import com.example.droid.data.model.Repository;
+import com.example.droid.data.model.github.Repository;
 
 
 import com.example.droid.data.viewmodel.github.GithubViewModel;

@@ -8,7 +8,7 @@ import android.view.View;
 
 
 import com.example.droid.BR;
-import com.example.droid.data.model.Pretty;
+import com.example.droid.data.model.user.Pretty;
 import com.example.droid.view.activity.GalleryDetailActivity;
 
 /**
