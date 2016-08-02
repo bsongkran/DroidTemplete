@@ -8,6 +8,8 @@ import com.example.droid.data.dal.IAppUserRepository;
 import com.example.droid.data.dal.PreferenceManager;
 import com.example.droid.data.model.user.AppUser;
 
+import javax.inject.Inject;
+
 
 /**
  * Created by js on 7/20/2015.
@@ -19,6 +21,7 @@ public class AppUserRepository implements IAppUserRepository {
     private static final String AppUserKey = "AppUser";
     private PreferenceManager mPreferenceManager;
 
+    @Inject
     public AppUserRepository(Context context) {
         this.context = context;
         this.mPreferenceManager = PreferenceManager.getPreferenceManager(context, Constants.SHOP_APPMOVER_STORAGE_PREFERENCE, Context.MODE_PRIVATE);
