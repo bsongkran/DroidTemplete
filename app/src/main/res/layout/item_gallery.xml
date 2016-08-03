@@ -7,7 +7,7 @@
     <data>
         <variable
             name="itemViewModel"
-            type="com.example.droid.data.viewmodel.gallery.ItemGridViewModel"></variable>
+            type="com.example.droid.viewmodel.gallery.ItemGridViewModel"></variable>
 
     </data>
 

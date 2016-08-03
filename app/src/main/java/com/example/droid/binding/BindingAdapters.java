@@ -9,8 +9,8 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.droid.data.viewmodel.MainViewModel;
 import com.example.droid.databinding.NavHeaderMainDrawerBinding;
+import com.example.droid.viewmodel.main.MainViewModel;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

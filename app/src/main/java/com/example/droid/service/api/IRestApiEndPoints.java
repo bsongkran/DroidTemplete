@@ -1,9 +1,9 @@
 package com.example.droid.service.api;
 
-import com.example.droid.data.model.user.AppUser;
-import com.example.droid.data.model.user.Pretty;
-import com.example.droid.data.model.github.Repository;
-import com.example.droid.data.model.user.User;
+import com.example.droid.model.user.AppUser;
+import com.example.droid.model.user.Pretty;
+import com.example.droid.model.github.Repository;
+import com.example.droid.model.user.User;
 
 import java.util.List;
 

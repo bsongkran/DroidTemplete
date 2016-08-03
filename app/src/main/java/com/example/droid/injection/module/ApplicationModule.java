@@ -4,9 +4,6 @@ import android.app.Application;
 import android.content.Context;
 
 
-import com.example.droid.data.viewmodel.gallery.GalleryViewModel;
-import com.example.droid.service.api.RestApiClient;
-
 import javax.inject.Singleton;
 
 import dagger.Module;

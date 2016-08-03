@@ -8,7 +8,7 @@
 
         <variable
             name="mainViewModel"
-            type="com.example.droid.data.viewmodel.MainViewModel"></variable>
+            type="com.example.droid.viewmodel.main.MainViewModel"></variable>
     </data>
 
     <FrameLayout

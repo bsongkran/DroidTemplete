@@ -6,8 +6,8 @@ package com.example.droid.injection.module;
 
 import android.content.Context;
 
-import com.example.droid.data.dal.IAppUserRepository;
-import com.example.droid.data.dal.repositories.AppUserRepository;
+import com.example.droid.dal.IAppUserRepository;
+import com.example.droid.dal.repositories.AppUserRepository;
 
 import javax.inject.Singleton;
 
