@@ -19,18 +19,22 @@
             android:id="@+id/nav_manage"
             android:icon="@drawable/ic_menu_manage"
             android:title="Tools"/>
+
+        <item
+            android:id="@+id/nav_github"
+            android:icon="@drawable/ic_action_github"
+            android:title="Github"/>
+
     </group>
 
-    <item android:title="Communicate">
+
+    <item android:title="Database">
         <menu>
             <item
-                android:id="@+id/nav_github"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Github"/>
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send"/>
+                android:id="@+id/nav_database"
+                android:icon="@drawable/ic_action_database"
+                android:title="Realm"/>
+
         </menu>
     </item>
 
@@ -39,14 +43,16 @@
             <item
                 android:id="@+id/nav_settings"
                 android:icon="@drawable/ic_settings_applications"
-                android:title="Settings"/>
+                android:title="General"/>
 
             <item
                 android:id="@+id/nav_user_profile"
                 android:icon="@drawable/ic_action_user"
-                android:title="User Profile"/>
+                android:title="Profile"/>
 
         </menu>
     </item>
+
+
 
 </menu>
