@@ -14,6 +14,8 @@ import java.util.Map;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 import okhttp3.ConnectionPool;
 import okhttp3.Dispatcher;
 import okhttp3.Interceptor;
@@ -38,6 +40,7 @@ public class RestApiClient implements IRestApiClient {
     /**
      * public constructor
      */
+    @Inject
     public RestApiClient(Context context) {
         this.context = context;
         this.initializeApi();

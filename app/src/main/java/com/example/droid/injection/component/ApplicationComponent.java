@@ -5,12 +5,12 @@ import com.example.droid.data.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.injection.module.ApplicationModule;
 import com.example.droid.injection.module.RepositoryModule;
 import com.example.droid.injection.module.ServiceModule;
-import com.example.droid.view.activity.LoginActivity;
-import com.example.droid.view.activity.MainActivity;
-import com.example.droid.view.activity.MainDrawerActivity;
-import com.example.droid.view.activity.SplashActivity;
-import com.example.droid.view.fragment.GalleryFragment;
-import com.example.droid.view.fragment.MapFragment;
+import com.example.droid.ui.activity.LoginActivity;
+import com.example.droid.ui.activity.MainActivity;
+import com.example.droid.ui.activity.MainDrawerActivity;
+import com.example.droid.ui.activity.SplashActivity;
+import com.example.droid.ui.fragment.GalleryFragment;
+import com.example.droid.ui.fragment.MapFragment;
 
 import javax.inject.Singleton;
 

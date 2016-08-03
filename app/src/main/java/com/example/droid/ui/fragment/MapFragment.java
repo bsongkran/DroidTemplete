@@ -1,4 +1,4 @@
-package com.example.droid.view.fragment;
+package com.example.droid.ui.fragment;
 
 
 import android.Manifest;
@@ -35,7 +35,6 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.example.droid.R;
 import com.example.droid.databinding.FragmentMapBinding;
-import com.example.droid.service.external.FusedLocationService;
 import com.example.droid.util.MarshMallowPermission;
 import com.example.droid.util.NetworkUtil;
 

@@ -1,4 +1,4 @@
-package com.example.droid.view.fragment;
+package com.example.droid.ui.fragment;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -16,7 +16,7 @@ import com.example.droid.data.model.user.Pretty;
 import com.example.droid.data.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.databinding.FragmentGalleryBinding;
 import com.example.droid.service.api.IRestApiClient;
-import com.example.droid.view.adapter.GalleryRecycleAdapter;
+import com.example.droid.ui.adapter.GalleryRecycleAdapter;
 
 import javax.inject.Inject;
 

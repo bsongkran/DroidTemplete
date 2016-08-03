@@ -1,4 +1,4 @@
-package com.example.droid.view.custom.dialog;
+package com.example.droid.ui.custom.dialog;
 
 /**
  * Created by ss on 7/12/2016.

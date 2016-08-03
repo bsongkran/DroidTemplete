@@ -1,4 +1,4 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.app.FragmentManager;
 import android.content.Context;

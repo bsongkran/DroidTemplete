@@ -1,4 +1,4 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.content.Context;
 import android.databinding.DataBindingUtil;
@@ -14,7 +14,7 @@ import com.example.droid.data.model.github.Repository;
 
 import com.example.droid.data.viewmodel.github.GithubViewModel;
 import com.example.droid.databinding.ActivityGithubBinding;
-import com.example.droid.view.adapter.RepositoryAdapter;
+import com.example.droid.ui.adapter.RepositoryAdapter;
 
 import java.util.List;
 

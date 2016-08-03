@@ -4,21 +4,13 @@ import android.databinding.BindingAdapter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.support.design.widget.NavigationView;
-import android.support.v4.util.Pair;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.droid.R;
-import com.example.droid.binding.fields.ObservableString;
 import com.example.droid.data.viewmodel.MainViewModel;
 import com.example.droid.databinding.NavHeaderMainDrawerBinding;
-import com.example.droid.util.TextChangeListener;
-import com.example.droid.view.custom.TouchImageView;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 

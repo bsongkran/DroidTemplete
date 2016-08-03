@@ -1,4 +1,4 @@
-package com.example.droid.view.custom;
+package com.example.droid.ui.custom;
 
 import android.annotation.TargetApi;
 import android.content.Context;

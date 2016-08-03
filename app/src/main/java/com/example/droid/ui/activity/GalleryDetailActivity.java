@@ -1,11 +1,10 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.view.View;
 
-import com.bumptech.glide.Glide;
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.gallery.GalleryDetailViewModel;
 import com.example.droid.databinding.ActivityGalleryDetailBinding;

@@ -1,4 +1,4 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;

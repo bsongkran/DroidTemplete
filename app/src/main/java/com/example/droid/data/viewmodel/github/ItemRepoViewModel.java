@@ -7,7 +7,7 @@ import android.view.View;
 import com.example.droid.R;
 import com.example.droid.data.model.github.Repository;
 import com.example.droid.data.viewmodel.BaseViewModel;
-import com.example.droid.view.activity.RepositoryActivity;
+import com.example.droid.ui.activity.RepositoryActivity;
 
 
 /**

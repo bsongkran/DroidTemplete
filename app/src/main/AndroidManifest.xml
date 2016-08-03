@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".view.activity.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/SplashTheme">
@@ -25,32 +25,32 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".view.activity.LoginActivity"
+            android:name=".ui.activity.LoginActivity"
             android:label="@string/title_activity_login"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".view.activity.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".view.activity.GithubActivity"
+            android:name=".ui.activity.GithubActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".view.activity.RepositoryActivity"
+            android:name=".ui.activity.RepositoryActivity"
             android:screenOrientation="portrait"
-            android:parentActivityName=".view.activity.GithubActivity"
+            android:parentActivityName=".ui.activity.GithubActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
 
         <activity
-            android:name=".view.activity.MainDrawerActivity"
+            android:name=".ui.activity.MainDrawerActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"
             android:label="@string/title_activity_main_drawer"/>
 
         <activity
-            android:name=".view.activity.GalleryDetailActivity"
+            android:name=".ui.activity.GalleryDetailActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"/>
 

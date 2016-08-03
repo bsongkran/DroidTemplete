@@ -1,4 +1,4 @@
-package com.example.droid.view.adapter;
+package com.example.droid.ui.adapter;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;

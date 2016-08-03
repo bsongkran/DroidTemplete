@@ -17,6 +17,8 @@ import com.google.android.gms.location.LocationServices;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import javax.inject.Inject;
+
 public class FusedLocationService implements IFusedLocationService {
 
     private static final String TAG = "FusedLocationService";
@@ -31,6 +33,7 @@ public class FusedLocationService implements IFusedLocationService {
     private LocationRequest mLocationRequest;
     private FusedLocationProviderApi fusedLocationProviderApi;
 
+    @Inject
     public FusedLocationService(Context context) {
         this.context = context;
     }

@@ -1,4 +1,4 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -19,14 +19,13 @@ import android.widget.Toast;
 import com.example.droid.MainApplication;
 import com.example.droid.data.dal.IAppUserRepository;
 import com.example.droid.databinding.ActivityMainDrawerBinding;
-import com.example.droid.service.api.IRestApiClient;
-import com.example.droid.view.fragment.SettingsFragment;
+import com.example.droid.ui.fragment.SettingsFragment;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 import com.example.droid.R;
 import com.example.droid.data.viewmodel.MainViewModel;
 
-import com.example.droid.view.fragment.GalleryFragment;
-import com.example.droid.view.fragment.MapFragment;
+import com.example.droid.ui.fragment.GalleryFragment;
+import com.example.droid.ui.fragment.MapFragment;
 
 import javax.inject.Inject;
 

@@ -1,4 +1,4 @@
-package com.example.droid.view.fragment;
+package com.example.droid.ui.fragment;
 
 import android.content.Context;
 import android.net.Uri;

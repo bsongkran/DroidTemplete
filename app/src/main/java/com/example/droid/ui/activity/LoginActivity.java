@@ -1,4 +1,4 @@
-package com.example.droid.view.activity;
+package com.example.droid.ui.activity;
 
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
@@ -21,7 +21,6 @@ import com.facebook.login.LoginResult;
 import com.example.droid.R;
 import com.example.droid.config.Constants;
 import com.example.droid.data.model.user.AppUser;
-import com.example.droid.data.dal.repositories.AppUserRepository;
 import com.example.droid.data.viewmodel.login.LoginViewModel;
 import com.example.droid.databinding.ActivityLoginBinding;
 
