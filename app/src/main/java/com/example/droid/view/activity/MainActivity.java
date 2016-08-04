@@ -3,9 +3,7 @@ package com.example.droid.view.activity;
 import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -17,27 +15,32 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.droid.MainApplication;
+import com.example.droid.R;
 import com.example.droid.dal.IAppUserRepository;
-
 import com.example.droid.databinding.ActivityMainBinding;
+import com.example.droid.model.user.AppUser;
+import com.example.droid.service.IUserService;
+import com.example.droid.view.fragment.GalleryFragment;
+import com.example.droid.view.fragment.MapFragment;
+import com.example.droid.view.fragment.RealmDatabaseFragment;
 import com.example.droid.view.fragment.SettingsFragment;
 import com.example.droid.viewmodel.main.MainViewModel;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
-import com.example.droid.R;
-
-import com.example.droid.view.fragment.GalleryFragment;
-import com.example.droid.view.fragment.MapFragment;
 
 import javax.inject.Inject;
 
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainViewModel.DataListener {
 
+    private static final String TAG = "MainActivity";
+    
     private ActivityMainBinding binding;
     private MainViewModel mainViewModel;
     private long lastBackPressTime = 0;
     private Toast mToastWarningMessage;
-
+    
+    @Inject
+    IUserService userService;
 
     @Inject
     IAppUserRepository appUserRepository;
@@ -46,8 +49,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //Inject
-        MainApplication.get(getApplicationContext()).getComponent().inject(this);
+
 
         //Binding data
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
@@ -66,7 +68,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setupNavigationDrawer() {
-      //  DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, binding.drawerLayout, binding.appBarMainDrawer.toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         binding.drawerLayout.setDrawerListener(toggle);
@@ -197,6 +198,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             case R.id.nav_settings:
                 binding.appBarMainDrawer.toolbarTitle.setText(R.string.toolbar_title_settings);
                 fragment = SettingsFragment.newInstance();
+                break;
+            case R.id.nav_database:
+                fragment = RealmDatabaseFragment.newInstance(getApplicationContext());
+                break;
+            case R.id.nav_logout:
+
+                userService.logout();
+
                 break;
             default:
                 binding.drawerLayout.closeDrawers();

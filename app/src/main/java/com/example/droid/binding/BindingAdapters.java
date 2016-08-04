@@ -9,7 +9,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
-import com.example.droid.databinding.NavHeaderMainDrawerBinding;
+import com.example.droid.databinding.NavHeaderMainBinding;
 import com.example.droid.viewmodel.main.MainViewModel;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -21,7 +21,7 @@ public class BindingAdapters {
 
     @BindingAdapter({"bind:model"})
     public static void loadHeader(NavigationView view, MainViewModel model) {
-        NavHeaderMainDrawerBinding binding = NavHeaderMainDrawerBinding.inflate(LayoutInflater.from(view.getContext()));
+        NavHeaderMainBinding binding = NavHeaderMainBinding.inflate(LayoutInflater.from(view.getContext()));
         binding.setMainViewModel(model);
         binding.executePendingBindings();
         view.addHeaderView(binding.getRoot());

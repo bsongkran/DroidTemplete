@@ -21,12 +21,6 @@ public interface ApplicationComponent {
     //Inject Main Application
     void injectApplication(MainApplication application);
 
-    //Inject Activities
-    void inject(SplashActivity splashActivity);
-    void inject(LoginActivity loginActivity);
-    void inject(MainActivity mainActivity);
-
-
 
     //Inject Fragments
     void inject(GalleryFragment galleryFragment);

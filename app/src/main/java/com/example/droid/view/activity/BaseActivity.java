@@ -2,8 +2,12 @@ package com.example.droid.view.activity;
 
 import android.app.FragmentManager;
 import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+
+import com.example.droid.injection.component.ActivityComponent;
 
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
@@ -11,6 +15,17 @@ import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
  * Created by ss on 7/1/2016.
  */
 public class BaseActivity extends AppCompatActivity {
+
+    private ActivityComponent activityComponent;
+
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        activityComponent = DaggerActivityComponent.builder()
+                .appComponent().build();
+    }
 
     @Override
     protected void attachBaseContext(Context newBase) {

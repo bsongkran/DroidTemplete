@@ -6,6 +6,9 @@ package com.example.droid.injection.module;
 
 import android.content.Context;
 
+import com.example.droid.dal.IAppUserRepository;
+import com.example.droid.service.IUserService;
+import com.example.droid.service.UserService;
 import com.example.droid.service.api.IRestApiClient;
 import com.example.droid.service.api.RestApiClient;
 import com.example.droid.service.external.FusedLocationService;
@@ -35,6 +38,12 @@ public class ServiceModule  {
     @Singleton
     public IFusedLocationService provideFusedLocationService (){
         return new FusedLocationService(context);
+    }
+
+    @Provides
+    @Singleton
+    public IUserService provideUserService(IAppUserRepository appUserRepository){
+        return new UserService(context );
     }
 
 }

@@ -53,7 +53,7 @@
             android:id="@+id/container_main"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            tools:showIn="@layout/app_bar_main_drawer">
+            tools:showIn="@layout/app_bar_main">
         </FrameLayout>
 
         <!--<android.support.design.widget.FloatingActionButton
