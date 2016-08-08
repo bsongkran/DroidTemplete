@@ -100,41 +100,41 @@ public class GithubViewModel implements IViewModel {
         infoMessageVisibility.set(View.INVISIBLE);
 
         if (subscription != null && !subscription.isUnsubscribed()) subscription.unsubscribe();
-       /* ApiClient apiClient = ApiClient.getInstance(context);
-        subscription = apiClient.getService().publicRepositories(username)
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribeOn(apiClient.defaultSubscribeScheduler())
-                .subscribe(new Subscriber<List<Repository>>() {
-                    @Override
-                    public void onCompleted() {
-                        if (dataListener != null) dataListener.onRepositoriesChanged(repositories);
-                        progressVisibility.set(View.INVISIBLE);
-                        if (!repositories.isEmpty()) {
-                            recyclerViewVisibility.set(View.VISIBLE);
-                        } else {
-                            infoMessage.set(context.getString(R.string.text_empty_repos));
-                            infoMessageVisibility.set(View.VISIBLE);
-                        }
-                    }
-
-                    @Override
-                    public void onError(Throwable error) {
-                        Log.e(TAG, "Error loading GitHub repos ", error);
-                        progressVisibility.set(View.INVISIBLE);
-                        if (isHttp404(error)) {
-                            infoMessage.set(context.getString(R.string.error_username_not_found));
-                        } else {
-                            infoMessage.set(context.getString(R.string.error_loading_repos));
-                        }
-                        infoMessageVisibility.set(View.VISIBLE);
-                    }
-
-                    @Override
-                    public void onNext(List<Repository> repositories) {
-                        Log.i(TAG, "Repos loaded " + repositories);
-                        GithubViewModel.this.repositories = repositories;
-                    }
-                });*/
+//        ApiClient apiClient = ApiClient.getInstance(context);
+//        subscription = apiClient.getService().publicRepositories(username)
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribeOn(apiClient.defaultSubscribeScheduler())
+//                .subscribe(new Subscriber<List<Repository>>() {
+//                    @Override
+//                    public void onCompleted() {
+//                        if (dataListener != null) dataListener.onRepositoriesChanged(repositories);
+//                        progressVisibility.set(View.INVISIBLE);
+//                        if (!repositories.isEmpty()) {
+//                            recyclerViewVisibility.set(View.VISIBLE);
+//                        } else {
+//                            infoMessage.set(context.getString(R.string.text_empty_repos));
+//                            infoMessageVisibility.set(View.VISIBLE);
+//                        }
+//                    }
+//
+//                    @Override
+//                    public void onError(Throwable error) {
+//                        Log.e(TAG, "Error loading GitHub repos ", error);
+//                        progressVisibility.set(View.INVISIBLE);
+//                        if (isHttp404(error)) {
+//                            infoMessage.set(context.getString(R.string.error_username_not_found));
+//                        } else {
+//                            infoMessage.set(context.getString(R.string.error_loading_repos));
+//                        }
+//                        infoMessageVisibility.set(View.VISIBLE);
+//                    }
+//
+//                    @Override
+//                    public void onNext(List<Repository> repositories) {
+//                        Log.i(TAG, "Repos loaded " + repositories);
+//                        GithubViewModel.this.repositories = repositories;
+//                    }
+//                });
     }
 
     private static boolean isHttp404(Throwable error) {

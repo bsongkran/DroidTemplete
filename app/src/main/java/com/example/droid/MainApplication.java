@@ -26,9 +26,10 @@ import net.danlew.android.joda.JodaTimeAndroid;
 import uk.co.chrisjenx.calligraphy.CalligraphyConfig;
 
 public class MainApplication extends Application {
+
     private static final String TAG = "MainApplication";
     private ApplicationComponent applicationComponent;
-    private ActivityComponent activityComponent;
+
     private Thread.UncaughtExceptionHandler androidDefaultUEH;
     private Thread.UncaughtExceptionHandler handler = new Thread.UncaughtExceptionHandler() {
         public void uncaughtException(Thread thread, Throwable ex) {
@@ -60,13 +61,8 @@ public class MainApplication extends Application {
         return (MainApplication) context.getApplicationContext();
     }
 
-    public ApplicationComponent getApplicationComponent() {
+    public ApplicationComponent getComponent() {
         return applicationComponent;
-    }
-
-
-    public ActivityComponent getActivityComponent(){
-        return activityComponent;
     }
 
     private void setupFontLibrary() {
@@ -81,8 +77,8 @@ public class MainApplication extends Application {
         //Dagger2 Inject
         applicationComponent = DaggerApplicationComponent.builder()
                 .applicationModule(new ApplicationModule(this))
-                .serviceModule(new ServiceModule(getApplicationContext()))
-                .repositoryModule(new RepositoryModule(getApplicationContext()))
+                .serviceModule(new ServiceModule(get(getApplicationContext())))
+                .repositoryModule(new RepositoryModule(get(getApplicationContext())))
                 .build();
         applicationComponent.injectApplication(this);
 

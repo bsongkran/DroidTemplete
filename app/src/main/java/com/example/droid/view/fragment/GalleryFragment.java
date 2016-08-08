@@ -4,24 +4,22 @@ import android.content.Context;
 import android.databinding.DataBindingUtil;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.droid.MainApplication;
 import com.example.droid.R;
-import com.example.droid.model.user.Pretty;
-import com.example.droid.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.databinding.FragmentGalleryBinding;
+import com.example.droid.model.user.Pretty;
 import com.example.droid.service.api.IRestApiClient;
 import com.example.droid.view.adapter.GalleryRecycleAdapter;
+import com.example.droid.viewmodel.gallery.GalleryViewModel;
 
 import javax.inject.Inject;
 
 
-public class GalleryFragment extends Fragment implements GalleryViewModel.IDataChangedListener {
+public class GalleryFragment extends BaseFragment implements GalleryViewModel.IDataChangedListener {
 
     private OnFragmentInteractionListener mListener;
     private Context context;
@@ -48,10 +46,11 @@ public class GalleryFragment extends Fragment implements GalleryViewModel.IDataC
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.context = getActivity().getApplicationContext();
-        MainApplication.get(context).getComponent().inject(this);
+        this.context = getContextBase();
 
-        galleryViewModel = new GalleryViewModel(context , this , this.restApiClient);
+        getApplicationComponent().inject(this);
+
+        galleryViewModel = new GalleryViewModel(context, this, this.restApiClient);
     }
 
     @Override
@@ -61,7 +60,6 @@ public class GalleryFragment extends Fragment implements GalleryViewModel.IDataC
         binding.setViewModel(galleryViewModel);
 
         setupRecycleView();
-
 
         return binding.getRoot();
     }

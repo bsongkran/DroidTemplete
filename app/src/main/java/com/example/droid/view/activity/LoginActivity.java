@@ -10,6 +10,7 @@ import android.view.View;
 
 import com.example.droid.MainApplication;
 import com.example.droid.dal.IAppUserRepository;
+import com.example.droid.view.fragment.BaseFragment;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -33,7 +34,7 @@ import javax.inject.Inject;
 import cc.cloudist.acplibrary.ACProgressConstant;
 import cc.cloudist.acplibrary.ACProgressFlower;
 
-public class LoginActivity extends AppCompatActivity implements LoginViewModel.LoginDataListener {
+public class LoginActivity extends BaseActivity implements LoginViewModel.LoginDataListener {
 
     private static final String TAG = "LoginActivity";
     private ActivityLoginBinding binding;
@@ -110,7 +111,7 @@ public class LoginActivity extends AppCompatActivity implements LoginViewModel.L
         setContentView(R.layout.activity_login);
 
         //Inject
-        MainApplication.get(getApplicationContext()).getComponent().inject(this);
+        getApplicationComponent().inject(this);
 
         this.callbackManager = CallbackManager.Factory.create();
         this.binding = DataBindingUtil.setContentView(this, R.layout.activity_login);

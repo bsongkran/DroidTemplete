@@ -24,13 +24,14 @@ import com.example.droid.view.fragment.GalleryFragment;
 import com.example.droid.view.fragment.MapFragment;
 import com.example.droid.view.fragment.RealmDatabaseFragment;
 import com.example.droid.view.fragment.SettingsFragment;
+import com.example.droid.viewmodel.gallery.GalleryViewModel;
 import com.example.droid.viewmodel.main.MainViewModel;
 import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import javax.inject.Inject;
 
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, MainViewModel.DataListener {
+public class MainActivity extends BaseActivity implements NavigationView.OnNavigationItemSelectedListener, MainViewModel.DataListener {
 
     private static final String TAG = "MainActivity";
     
@@ -49,7 +50,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        // Inject
+        getApplicationComponent().inject(this);
 
         //Binding data
         binding = DataBindingUtil.setContentView(this, R.layout.activity_main);

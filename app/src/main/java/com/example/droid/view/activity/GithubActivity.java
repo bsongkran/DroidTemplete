@@ -22,14 +22,20 @@ import java.util.List;
 public class GithubActivity extends BaseActivity implements GithubViewModel.DataListener {
 
     private ActivityGithubBinding binding;
-    private GithubViewModel mainViewModel;
+    private GithubViewModel githubViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        getApplicationComponent().inject(this);
+
         binding = DataBindingUtil.setContentView(this, R.layout.activity_github);
-        mainViewModel = new GithubViewModel(this, this);
-        binding.setViewModel(mainViewModel);
+        githubViewModel = new GithubViewModel(this, this);
+
+
+
+        binding.setViewModel(githubViewModel);
         setSupportActionBar(binding.toolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -42,7 +48,7 @@ public class GithubActivity extends BaseActivity implements GithubViewModel.Data
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        mainViewModel.destroy();
+        githubViewModel.destroy();
     }
 
     @Override

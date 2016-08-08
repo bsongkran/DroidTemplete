@@ -4,6 +4,9 @@ import android.app.Application;
 import android.content.Context;
 
 
+import com.example.droid.service.api.IRestApiClient;
+import com.example.droid.viewmodel.gallery.GalleryViewModel;
+
 import javax.inject.Singleton;
 
 import dagger.Module;
@@ -34,6 +37,7 @@ public class ApplicationModule {
     Context provideApplicationContext() {
         return application.getApplicationContext();
     }
+
 
 
 

@@ -4,6 +4,7 @@ package com.example.droid.injection.module;
  * Created by ss on 7/20/2016.
  */
 
+import android.app.Application;
 import android.content.Context;
 
 import com.example.droid.dal.IAppUserRepository;
@@ -20,30 +21,29 @@ import dagger.Module;
 import dagger.Provides;
 
 @Module
-public class ServiceModule  {
+public class ServiceModule extends ApplicationModule {
 
-    private final Context context;
 
-    public ServiceModule(Context context){
-        this.context = context;
+    public ServiceModule(Application application) {
+        super(application);
     }
 
     @Provides
     @Singleton
     public IRestApiClient provideRestApiClient(){
-        return new RestApiClient(context);
+        return new RestApiClient(provideApplicationContext());
     }
 
     @Provides
     @Singleton
     public IFusedLocationService provideFusedLocationService (){
-        return new FusedLocationService(context);
+        return new FusedLocationService(provideApplicationContext());
     }
 
     @Provides
     @Singleton
     public IUserService provideUserService(IAppUserRepository appUserRepository){
-        return new UserService(context );
+        return new UserService(provideApplicationContext() );
     }
 
 }

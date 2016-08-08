@@ -14,14 +14,12 @@ import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.Fragment;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
 
-import com.example.droid.MainApplication;
 import com.example.droid.service.external.IFusedLocationService;
 import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -45,14 +43,14 @@ import java.util.List;
 import javax.inject.Inject;
 
 
-public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClickListener,
+public class MapFragment extends BaseFragment implements GoogleMap.OnInfoWindowClickListener,
         OnMapReadyCallback, GoogleMap.OnMyLocationButtonClickListener, GoogleMap.OnMapLoadedCallback {
 
     private Context context;
     private Location mCurrentLocation;
     private SupportMapFragment supportMapFragment;
     private GoogleMap googleMap;
-    private LatLng currenLatLng;
+    private LatLng currentLatLng;
     private FragmentMapBinding binding;
     @Inject
     IFusedLocationService fusedLocationService;
@@ -70,9 +68,8 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        this.context = getActivity().getApplicationContext();
 
-        MainApplication.get(context).getComponent().inject(this);
+        getApplicationComponent().inject(this);
 
         initializeLocationService();
     }
@@ -139,7 +136,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
                 builder.setCancelable(true);
                 builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        String url = "http://maps.google.com/maps?saddr=" + (currenLatLng != null ? currenLatLng.latitude : "") + "," + (currenLatLng != null ? currenLatLng.longitude : "")
+                        String url = "http://maps.google.com/maps?saddr=" + (currentLatLng != null ? currentLatLng.latitude : "") + "," + (currentLatLng != null ? currentLatLng.longitude : "")
                                 + "&daddr=" + latLng.latitude + "," + latLng.longitude + "&mode=driving";
                         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                         startActivity(intent);
@@ -226,10 +223,10 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
         if (googleMap != null) googleMap.clear();
         if (location != null) {
             LatLng latLng = new LatLng(location.getLatitude(), location.getLongitude());
-            this.currenLatLng = latLng;
+            this.currentLatLng = latLng;
         }
-        if (currenLatLng != null && getListLocationMarkerOptions() != null) {
-            drawMarker(currenLatLng);
+        if (currentLatLng != null && getListLocationMarkerOptions() != null) {
+            drawMarker(currentLatLng);
         }
     }
 
@@ -243,7 +240,7 @@ public class MapFragment extends Fragment implements GoogleMap.OnInfoWindowClick
         for (MarkerOptions options : getListLocationMarkerOptions()) {
             builder.include(options.getPosition());
         }
-        builder.include(currenLatLng);
+        builder.include(currentLatLng);
         LatLngBounds bounds = builder.build();
         // zoom
         customGoogleMapZoom(adjustBoundsForMaxZoomLevel(bounds));
