@@ -6,11 +6,9 @@ import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.crashlytics.android.Crashlytics;
-import com.example.droid.injection.component.ActivityComponent;
 import com.example.droid.injection.component.ApplicationComponent;
 
 import com.example.droid.injection.component.DaggerApplicationComponent;
-import com.example.droid.injection.module.ActivityModule;
 import com.example.droid.injection.module.ApplicationModule;
 import com.example.droid.injection.module.RepositoryModule;
 import com.example.droid.injection.module.ServiceModule;
@@ -55,6 +53,8 @@ public class MainApplication extends Application {
         setupFontLibrary();
 
         JodaTimeAndroid.init(this);
+
+        //NetworkUtil.generateFacebookHashKey(this.getApplicationContext());
     }
 
     public static MainApplication get(@NonNull Context context) {

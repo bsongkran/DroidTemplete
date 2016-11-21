@@ -5,10 +5,9 @@ package com.example.droid.injection.module;
  */
 
 import android.app.Application;
-import android.content.Context;
 
-import com.example.droid.dal.IAppUserRepository;
 import com.example.droid.dal.repositories.AppUserRepository;
+import com.example.droid.dal.repositories.AppUserRepositoryImpl;
 
 import javax.inject.Singleton;
 
@@ -24,8 +23,8 @@ public class RepositoryModule extends ApplicationModule {
 
     @Provides
     @Singleton
-    public IAppUserRepository provideAppUserRepository(){
-        return new AppUserRepository(provideApplicationContext());
+    public AppUserRepository provideAppUserRepository(){
+        return new AppUserRepositoryImpl(provideApplicationContext());
     }
 
 

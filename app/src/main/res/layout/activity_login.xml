@@ -19,14 +19,14 @@
         android:paddingRight="18dp">
 
 
-        <ImageView
-            android:id="@+id/imv_logo"
-            android:layout_width="90dp"
-            android:layout_height="90dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:src="@drawable/logo_android"
-            android:layout_marginTop="18dp"/>
+        <!--<ImageView-->
+            <!--android:id="@+id/imv_logo"-->
+            <!--android:layout_width="90dp"-->
+            <!--android:layout_height="90dp"-->
+            <!--android:layout_alignParentTop="true"-->
+            <!--android:layout_centerHorizontal="true"-->
+            <!--android:src="@drawable/logo_android"-->
+            <!--android:layout_marginTop="18dp"/>-->
 
         <Button
             android:id="@+id/btn_login"
